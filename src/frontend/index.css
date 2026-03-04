@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KnockSupport Design Tokens (OKLCH)
+   Palette: Deep Navy + Electric Teal */
+
+/* Mona Sans - Display / Headings */
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/assets/fonts/Mona-Sans.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Outfit - Body / UI */
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Mono - Code / Technical */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* Base */
+    --background: 0.12 0.022 255;
+    --foreground: 0.95 0.01 240;
+
+    /* Card / Popover surfaces */
+    --card: 0.16 0.025 255;
+    --card-foreground: 0.95 0.01 240;
+    --popover: 0.14 0.022 255;
+    --popover-foreground: 0.95 0.01 240;
+
+    /* Primary: Electric Teal */
+    --primary: 0.72 0.18 195;
+    --primary-foreground: 0.10 0.015 255;
+
+    /* Secondary: Muted navy */
+    --secondary: 0.20 0.030 255;
+    --secondary-foreground: 0.90 0.012 240;
+
+    /* Muted */
+    --muted: 0.18 0.025 255;
+    --muted-foreground: 0.60 0.04 240;
+
+    /* Accent */
+    --accent: 0.22 0.035 255;
+    --accent-foreground: 0.78 0.20 192;
+
+    /* Destructive */
+    --destructive: 0.60 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    /* Borders & Inputs */
+    --border: 0.28 0.04 240;
+    --input: 0.22 0.032 255;
+    --ring: 0.72 0.18 195;
+
+    /* Charts */
+    --chart-1: 0.72 0.18 195;
+    --chart-2: 0.65 0.15 220;
+    --chart-3: 0.55 0.12 240;
+    --chart-4: 0.80 0.20 165;
+    --chart-5: 0.60 0.22 25;
+
+    /* Sidebar */
+    --sidebar: 0.14 0.022 255;
+    --sidebar-foreground: 0.95 0.01 240;
+    --sidebar-primary: 0.72 0.18 195;
+    --sidebar-primary-foreground: 0.10 0.015 255;
+    --sidebar-accent: 0.20 0.030 255;
+    --sidebar-accent-foreground: 0.90 0.012 240;
+    --sidebar-border: 0.28 0.04 240;
+    --sidebar-ring: 0.72 0.18 195;
+
+    /* Custom brand tokens */
+    --teal-glow: 0.72 0.18 195;
+    --teal-deep: 0.50 0.14 195;
+    --navy-surface: 0.16 0.025 255;
+    --navy-deep: 0.09 0.018 260;
+    --text-bright: 0.97 0.005 240;
+    --text-dim: 0.55 0.04 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Mona Sans", sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Mona Sans", sans-serif;
+  }
+
+  .font-mono-brand {
+    font-family: "Geist Mono", monospace;
+  }
+
+  .text-teal {
+    color: oklch(var(--teal-glow));
+  }
+
+  .bg-navy-surface {
+    background-color: oklch(var(--navy-surface));
+  }
+
+  .bg-navy-deep {
+    background-color: oklch(var(--navy-deep));
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(0, 210, 190, 0.35), 0 0 60px rgba(0, 210, 190, 0.15);
+  }
+
+  .glow-teal-sm {
+    box-shadow: 0 0 10px rgba(0, 210, 190, 0.25), 0 0 30px rgba(0, 210, 190, 0.1);
+  }
+
+  .gradient-text-teal {
+    background: linear-gradient(135deg, #4dd9c8, #00b8a8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-divider {
+    border-top: 1px solid oklch(var(--border));
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, rgba(0, 210, 190, 0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .hero-scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.04) 2px,
+      rgba(0, 0, 0, 0.04) 4px
+    );
+    pointer-events: none;
+  }
+}
